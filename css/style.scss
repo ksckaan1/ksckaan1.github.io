@@ -1,0 +1,472 @@
+@import "./defaults";
+@import "./anim";
+@import "./mobile";
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 300px;
+    background-color: $primaryColor;
+    box-shadow: 0px 0px 10px rgba($primaryColor, 0.6);
+    background-image: url('/img/menubg.png');
+    background-size: 300px;
+    background-repeat: repeat-y;
+    transition: all .5s ease-in-out;
+
+    .top {
+        margin-top: 50px;
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+
+        .circlePhoto {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            align-self: center;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .myName {
+            font-size: 25px;
+            font-weight: light;
+            color: $softWhite;
+            // letter-spacing: 2px;
+            align-self: center;
+            margin-top: 10px;
+            text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .myTitle {
+            font-size: 15px;
+            color: $softWhite;
+            align-self: center;
+            font-weight: light;
+            margin-top: 5px;
+            text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .menu {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 40px;
+
+            a {
+                color: $softWhite;
+                font-weight: light;
+                text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+                transition: all .3s;
+
+                &:hover {
+                    color: white;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+    }
+
+    .bottom {
+        color: $softWhite;
+        align-self: center;
+        font-size: 14px;
+        margin-bottom: 20px;
+
+        .social {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            img {
+                cursor: pointer;
+                transition: all .3s;
+                opacity: .5;
+
+                &:hover {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+}
+
+.topBar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 0px;
+    background-color: $primaryColor;
+    z-index: 9;
+
+    #backButton {
+        display: block;
+        width: 50px;
+        height: 32px;
+        background-image: url("/img/back.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        cursor: pointer;
+    }
+
+    #title {
+        flex: 1;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        text-shadow: rgba(0, 0, 0, 0.6);
+        padding-left: 20px;
+    }
+}
+
+.container {
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    width: calc(100vw - 300px);
+    height: 100vh;
+    background-color: $darkColor;
+    transition: left .5s;
+
+    section {
+        position: absolute;
+        top: 0px;
+        width: calc(100vw - 300px);
+        background-color: coral;
+        height: 100vh;
+        transition: left 1s ease-in-out;
+        overflow-y: auto;
+
+        span {
+            align-self: center;
+        }
+
+        &.section1 {
+            background-color: $darkColor;
+
+            color: $softWhite;
+
+            .hero {
+                display: flex;
+                flex-direction: row;
+                padding: 50px;
+                height: 100vh;
+                align-items: flex-end;
+                background-image: url("/img/aboutmebg.png");
+                background-size: calc(100vh - 100px) auto;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                .heroTitle {
+                    font-size: 30px;
+                    flex: 1;
+                    font-weight: lighter;
+                }
+
+                #scrolldown {
+                    width: 50px;
+                    height: 50px;
+                    background-image: url("/img/down-arrow.png");
+                    background-size: contain;
+                    cursor: pointer;
+                    animation-name: scrolldownanim;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+                }
+            }
+
+            .interests {
+                min-height: 100vh;
+                padding: 50px;
+                background-color: $secondaryColor;
+                color: $softBlack;
+
+                .title {
+                    font-size: 30px;
+                    font-weight: 700;
+                    text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+                    margin-bottom: 20px;
+                    color: $softWhite;
+                }
+
+                .interestsList {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    margin: -20px;
+                    justify-content: safe;
+                    align-items: flex-start;
+
+                    .interest {
+                        width: 200px;
+                        padding: 10px;
+                        border-radius: 20px;
+                        // box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+                        // background-color: $primaryColor;
+                        margin: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        transform: translateY(50px);
+                        transition: all .30s;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+
+                        .intIcon {
+                            flex: 1;
+                            text-align: center;
+                            display: flex;
+                            justify-content: center;
+
+                            img {
+                                align-self: center;
+                                height: 64px;
+                            }
+                        }
+
+                        .title {
+                            font-size: 18px;
+                            text-align: center;
+                            margin-top: 10px;
+                        }
+
+                        .detail {
+                            color: transparent;
+                            text-align: center;
+                            transition: all 1s;
+                            font-size: 14px;
+                            height: 0px;
+                        }
+
+                        &:hover>.detail {
+                            color: $detailColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.section2 {
+            min-height: 100vh;
+            padding: 50px;
+            background-color: $darkColor;
+
+            .title {
+                font-size: 30px;
+                font-weight: 700;
+                text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+                margin-bottom: 20px;
+                color: $softWhite;
+            }
+
+            .subTitle {
+                font-size: 25px;
+                font-weight: 500;
+                text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+                margin-bottom: 20px;
+                color: $softWhite;
+            }
+
+            .itemList {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: -5px;
+                margin-bottom: 20px;
+
+                .listItem {
+                    padding: 5px;
+                    width: 100%;
+                    max-width: 400px;
+                    margin: 10px 0px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+
+                    .img {
+                        width: 64px;
+                        height: 64px;
+                        object-fit: contain;
+                        object-position: center;
+                        margin-right: 10px;
+                        // background-color: $primaryColor;
+                        border-radius: 10px;
+                        padding: 5px;
+                    }
+
+                    .detail {
+                        flex: 1;
+
+                        .title {
+                            color: $softWhite;
+                            font-weight: bold;
+                            font-size: 16px;
+                        }
+
+                        .links {
+                            margin-top: -20px;
+
+                            a {
+                                color: $detailColor;
+                                text-decoration: underline;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        &.section3 {
+            min-height: 100vh;
+            padding: 50px;
+            background-color: $darkColor;
+
+            .title {
+                font-size: 30px;
+                font-weight: 700;
+                text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+                margin-bottom: 20px;
+                color: $softWhite;
+            }
+
+            .linkCards {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: -10px;
+
+                .card {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: row;
+                    min-width: 200px;
+                    height: 100px;
+                    // background: linear-gradient(top left, $primaryColor, $darkColor);
+                    background-image: url("/img/menubg.png");
+                    color: $primaryColor;
+                    margin: 10px;
+                    border-radius: 10px;
+                    padding: 10px;
+                    align-items: center;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+                    &:hover>.goto {
+                        transform: scale(1.3) translateX(15px);
+                    }
+
+                    .cardTitle {
+                        flex: 1;
+                        color: $softWhite;
+                        font-size: 18px;
+                        font-weight: 400;
+                        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+                        margin-left: 10px;
+                    }
+
+                    .goto {
+                        background-image: url("/img/right-arrow.png");
+                        background-size: 30px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        width: 30px;
+                        height: 30px;
+                        transition: all .5s;
+                    }
+                }
+
+
+            }
+        }
+
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    html {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    header {
+        width: 100vw;
+        background-size: contain;
+        background-repeat: repeat;
+    }
+
+    .container {
+        position: absolute;
+        left: 0px;
+        top: 50px;
+        width: 100vw;
+        height: calc(100vh - 50px);
+        background-color: $darkColor;
+        transition: all .5s ease-in-out;
+
+        section {
+            position: absolute;
+            top: 0px;
+            width: 100vw;
+            background-color: coral;
+            height: calc(100vh - 50px);
+            transition: all 1s ease-in-out;
+            overflow-y: auto;
+
+
+            &.section1>.interests>.interestsList {
+                justify-content: center;
+            }
+        }
+    }
+
+    .topBar {
+        height: 50px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+    }
+}
